@@ -1,0 +1,23 @@
+{
+  "name": "githunt-react-mui",
+  "description": "An example of a GraphQL client-side app built with React, Apollo Client and Material UI",
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "Naresh Bhatia",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/archfirst/githunt-react-mui.git"
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-scripts": "1.0.10"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
