@@ -27,7 +27,7 @@ class FeedPage extends React.Component {
                 <FeedSelector tab={match.params.feedType} />
 
                 <div className={classes.content}>
-                    <EntryListWrapperWithData feedType={match.params.feedType} />
+                    <FeedViewWithData feedType={match.params.feedType} />
                 </div>
             </div>
         );
@@ -61,7 +61,10 @@ query Feed($type: FeedType!, $offset: Int, $limit: Int) {
     }
 }`;
 
-class EntryListWrapper extends React.Component {
+/**
+ * Container for the Refresh button and the EntryList
+ */
+class FeedView extends React.Component {
 
     render() {
         const { entries } = this.props;
@@ -82,9 +85,9 @@ class EntryListWrapper extends React.Component {
     };
 }
 
-// EntryListWrapperWithData = graphql(...)(LoadingStateViewer(EntryListWrapper))
+// FeedViewWithData = graphql(...)(LoadingStateViewer(FeedView))
 const ITEMS_PER_PAGE = 10;
-const EntryListWrapperWithData = graphql(
+const FeedViewWithData = graphql(
     FEED_QUERY,
     {
         options: props => ({
@@ -102,6 +105,6 @@ const EntryListWrapperWithData = graphql(
             refetch
         })
     }
-)(LoadingStateViewer(EntryListWrapper));
+)(LoadingStateViewer(FeedView));
 
 export default withStyles(styleSheet)(FeedPage);
