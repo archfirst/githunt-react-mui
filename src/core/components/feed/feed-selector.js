@@ -2,19 +2,18 @@ import React from 'react';
 import { createStyleSheet, withStyles } from 'material-ui/styles';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import PropTypes from 'prop-types';
-import { browserHistory } from '../core/utils';
+import { browserHistory } from '../../utils/index';
 
-const styleSheet = createStyleSheet('ConfNavBar', () => ({
+const styleSheet = createStyleSheet('FeedSelector', () => ({
     root: {
         flex: '0 0 54px'
     }
 }));
 
-class NavBar extends React.Component {
+class FeedSelector extends React.Component {
 
     static propTypes = {
-        confId: PropTypes.string.isRequired,
-        tab: PropTypes.string.isRequired
+        tab: PropTypes.string
     };
 
     render() {
@@ -41,7 +40,7 @@ class NavBar extends React.Component {
             hot: 1,
             new: 2,
         };
-        return map[tab];
+        return map[tab || 'top'];
     }
 
     index2Tab(index) {
@@ -54,4 +53,4 @@ class NavBar extends React.Component {
     }
 }
 
-export default withStyles(styleSheet)(NavBar);
+export default withStyles(styleSheet)(FeedSelector);
