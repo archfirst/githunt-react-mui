@@ -19,7 +19,10 @@ class App extends React.Component {
         return new ApolloClient({
             networkInterface: createNetworkInterface({
                 uri: 'http://api.githunt.com/graphql'
-            })
+            }),
+            // Inform Apollo about the id field of our objects.
+            // Apollo will use this field as the key for its caches.
+            dataIdFromObject: o => o.id
         });
     }
 
