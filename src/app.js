@@ -11,8 +11,6 @@ import { Router } from 'react-router-dom';
 import { browserHistory } from './core/utils';
 import Shell from './shell';
 
-let styleManager;
-
 class App extends React.Component {
 
     createClient() {
@@ -40,17 +38,9 @@ class App extends React.Component {
 
         const theme = createMuiTheme({ palette, typography });
 
-        if (!styleManager) {
-            const themeContext = MuiThemeProvider.createDefaultContext({ theme });
-            styleManager = themeContext.styleManager;
-        }
-        else {
-            styleManager.updateTheme(theme);
-        }
-
         return (
             <ApolloProvider client={this.createClient()}>
-                <MuiThemeProvider theme={theme} styleManager={styleManager}>
+                <MuiThemeProvider theme={theme}>
                     <Router history={browserHistory}>
                         <Shell />
                     </Router>
